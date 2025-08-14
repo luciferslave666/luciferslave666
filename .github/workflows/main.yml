@@ -1,0 +1,36 @@
+name: Generate Contribution Graph
+
+on:
+  # Jalankan setiap 6 jam
+  schedule:
+    - cron: '0 */6 * * *'
+  # Jalankan saat di-push ke branch main
+  push:
+    branches:
+      - main
+  # Memungkinkan Anda menjalankan action ini secara manual dari tab Actions
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Generates a contribution graph
+    steps:
+      - uses: actions/checkout@v3
+      - uses: platane/platane@v1.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Opsi di bawah ini akan membuat file di folder 'output/'
+        # dengan nama pacman-contribution-graph.svg
+        # dan juga membuat versi gelapnya (dark).
+          outputs: |
+            output/pacman-contribution-graph.svg
+            output/pacman-contribution-graph-dark.svg?palette=dracula
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "CHORE: Update contribution graph" || exit 0
+          git push
