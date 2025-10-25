@@ -24,13 +24,6 @@
 
 ###
 
-<h3 align="center">👩‍💻  About Me</h3>
-
-###
-
-<p align="left">I'm Sendi from Indonesia<br><br>- 🔭 I’m working as a Full-Stack Developer turning ideas into real web applications.<br>- 📚 I'm currently learning how to build modern web applications with Next.js and TypeScript.<br>- ⚡ In my free time I work on side projects to experiment with new technologies.</p>
-
-###
 
 <h3 align="left">🔥   My Stats :</h3>
 
